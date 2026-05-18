@@ -229,6 +229,7 @@
     .proj-item {
       aspect-ratio: 4/3; position: relative; overflow: hidden;
       cursor: pointer; background: var(--bg2);
+      opacity: 1; transition: opacity .3s ease;
     }
     .proj-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
     .proj-item:hover .proj-overlay { opacity: 1; }
@@ -259,6 +260,57 @@
     .proj-item:nth-child(4) .proj-ph { background: linear-gradient(135deg,#dcd4ed,#cfc5e2); }
     .proj-item:nth-child(5) .proj-ph { background: linear-gradient(135deg,#e1d9ef,#d5caeb); }
     .proj-item:nth-child(6) .proj-ph { background: linear-gradient(135deg,#e8e0f4,#dbd0ea); }
+
+    /* ─────────────────────────────────────────
+       BEHIND THE SCENES
+    ───────────────────────────────────────── */
+    .bts-section {
+      margin-top: 4rem; padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .bts-eyebrow {
+      font-family: var(--f-cond); font-size: .6rem; font-weight: 700;
+      letter-spacing: .35em; text-transform: uppercase;
+      color: var(--amethyst); margin-bottom: .5rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .bts-eyebrow::before { content: '◆'; font-size: .45rem; }
+    .bts-title {
+      font-family: var(--f-display); font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--ink); margin-bottom: .2rem; line-height: 1.1;
+    }
+    .bts-meta {
+      font-family: var(--f-cond); font-size: .68rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.8rem;
+    }
+    .bts-photo-wrap {
+      position: relative; overflow: hidden;
+      background: var(--ink); max-height: 600px;
+    }
+    .bts-photo {
+      width: 100%; display: block;
+      max-height: 600px; object-fit: cover;
+      transition: transform .5s ease; opacity: .95;
+    }
+    .bts-photo-wrap:hover .bts-photo { transform: scale(1.02); }
+    .bts-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(15,10,24,.85));
+      padding: 2.5rem 1.8rem 1.4rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .bts-tag {
+      font-family: var(--f-cond); font-size: .58rem; font-weight: 900;
+      letter-spacing: .22em; text-transform: uppercase;
+      background: var(--amethyst); color: var(--white);
+      padding: .28rem .7rem; flex-shrink: 0;
+    }
+    .bts-caption-text {
+      font-family: var(--f-cond); font-size: .7rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+    }
 
     .webs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--border); width: 100%; }
     .webs-grid .proj-item { aspect-ratio: 16/9; grid-column: span 1; }
@@ -718,19 +770,103 @@
       <div class="sec-rule"></div>
     </div>
     <div class="proj-tabs">
-      <button class="ptab active">Todo</button>
-      <button class="ptab">Fotografía</button>
-      <button class="ptab">Video</button>
-      <button class="ptab">Eventos</button>
-      <button class="ptab">Redes</button>
+      <button class="ptab active" data-filter="">Todo</button>
+      <button class="ptab" data-filter="fotografia">Fotografía</button>
+      <button class="ptab" data-filter="video">Video</button>
+      <button class="ptab" data-filter="eventos">Eventos</button>
+      <button class="ptab" data-filter="redes">Redes</button>
     </div>
     <div class="proj-grid">
-      <div class="proj-item"><div class="proj-ph"><span class="proj-ph-icon">🎬</span><span class="proj-ph-txt">Tu foto / video aquí</span></div><div class="proj-overlay"><p class="proj-cat">Video Musical</p><h3 class="proj-name">Dirección · Edición · Fotografía</h3></div></div>
-      <div class="proj-item"><div class="proj-ph"><span class="proj-ph-icon">📷</span><span class="proj-ph-txt">Tu foto aquí</span></div><div class="proj-overlay"><p class="proj-cat">Evento</p><h3 class="proj-name">Animayo 2025</h3></div></div>
-      <div class="proj-item"><div class="proj-ph"><span class="proj-ph-icon">✦</span><span class="proj-ph-txt">Tu foto aquí</span></div><div class="proj-overlay"><p class="proj-cat">Fotografía Comercial</p><h3 class="proj-name">Sesión de producto</h3></div></div>
-      <div class="proj-item"><div class="proj-ph"><span class="proj-ph-icon">🎪</span><span class="proj-ph-txt">Tu foto aquí</span></div><div class="proj-overlay"><p class="proj-cat">Co-host</p><h3 class="proj-name">Creative Mornings LPA</h3></div></div>
-      <div class="proj-item"><div class="proj-ph"><span class="proj-ph-icon">🎵</span><span class="proj-ph-txt">Tu video aquí</span></div><div class="proj-overlay"><p class="proj-cat">Redes Sociales</p><h3 class="proj-name">Reels para marca</h3></div></div>
-      <div class="proj-item"><div class="proj-ph"><span class="proj-ph-icon">🌙</span><span class="proj-ph-txt">Tu foto aquí</span></div><div class="proj-overlay"><p class="proj-cat">Fotografía Comercial</p><h3 class="proj-name">Sesión de local</h3></div></div>
+      <a href="https://www.behance.net/gallery/249382183/Djame-ser-mi-propio-testimonio-Sin-editar" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="text-decoration: none;">
+        <div class="proj-ph">
+          <img src="dejame ser mi propio testimonio.jpg" alt="Déjame ser mi propio testimonio" style="width:100%;height:100%;object-fit:cover;object-position:center 80%;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Proyecto 8M &nbsp;·&nbsp; Generación 21</p>
+          <h3 class="proj-name">Déjame ser mi propio testimonio &nbsp;·&nbsp; Gran Canaria &nbsp;·&nbsp; Marzo 2025</h3>
+        </div>
+      </a>
+      <a href="https://www.behance.net/gallery/249386627/Portraits-Linkedin-Profile-photo" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="aspect-ratio: unset; text-decoration: none;">
+        <div class="proj-ph">
+          <img src="1ce951a8-9223-46a0-8248-77a69736eaf5.jpg" alt="Portraits · Linkedin · Profile photo" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Fotografía de perfil</p>
+          <h3 class="proj-name">Portraits &nbsp;·&nbsp; Linkedin &nbsp;·&nbsp; Profile photo</h3>
+        </div>
+      </a>
+      <a href="https://www.behance.net/gallery/249384569/De-Rambull-Catering" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="text-decoration: none;">
+        <div class="proj-ph">
+          <img src="ANIM8808.JPG" alt="De Rambullé Catering" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Fotografía Comercial</p>
+          <h3 class="proj-name">De Rambullé Catering</h3>
+        </div>
+      </a>
+      <a href="https://www.flickr.com/photos/creativemorningslpa/albums/" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="text-decoration: none;">
+        <div class="proj-ph">
+          <img src="creative mornings.JPG" alt="Creative Mornings LPA" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Fotografía &nbsp;·&nbsp; Sep 2025 – Feb 2026</p>
+          <h3 class="proj-name">Creative Mornings LPA</h3>
+        </div>
+      </a>
+      <a href="https://www.behance.net/gallery/249389019/Eventos-varios" target="_blank" rel="noopener" class="proj-item" data-cat="eventos" style="text-decoration: none;">
+        <div class="proj-ph">
+          <img src="DSC07450.jpg" alt="Eventos varios" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Fotos de Eventos</p>
+          <h3 class="proj-name">Eventos varios</h3>
+        </div>
+      </a>
+      <a href="https://www.behance.net/gallery/220134615/BTS-Shingeki-No-Kyojin-Live-Action-Proyect-%28sin-editar%29" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="text-decoration: none;">
+        <div class="proj-ph">
+          <img src="IMG_0136.jpg" alt="BTS Live Action Ataque a los Titanes — Byyronman" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Behind the Scenes</p>
+          <h3 class="proj-name">Live Action "Ataque a los Titanes" &nbsp;·&nbsp; Byyronman</h3>
+        </div>
+      </a>
+      <a href="https://www.behance.net/gallery/249389815/Redes-Sociales" target="_blank" rel="noopener" class="proj-item" data-cat="redes" style="text-decoration: none;">
+        <div class="proj-ph">
+          <img src="Captura de pantalla 2025-11-28 172941.png" alt="Contenido para redes sociales" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Redes Sociales</p>
+          <h3 class="proj-name">Contenido para redes sociales</h3>
+        </div>
+      </a>
+      <a href="https://www.behance.net/gallery/220134615/BTS-Shingeki-No-Kyojin-Live-Action-Proyect-%28sin-editar%29" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="text-decoration: none;">
+        <div class="proj-ph">
+          <img src="bts-snk-javier-2024.jpg" alt="Behind the scenes — Shingeki no Kyojin live action" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Behind the scenes</p>
+          <h3 class="proj-name">A long dream &nbsp;·&nbsp; Javier Ortega Arrocha</h3>
+        </div>
+      </a>
+      <a href="https://www.behance.net/gallery/249387371/La-nina-de-la-calle-Sala-Faro" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="aspect-ratio: unset; text-decoration: none;">
+        <div class="proj-ph">
+          <img src="46.png" alt="La niña de la calle — Sala Faro" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Fotografía</p>
+          <h3 class="proj-name">La niña de la calle &nbsp;·&nbsp; Sala Faro, Marzo 2025</h3>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=TxH0Hp5xroA&list=RDTxH0Hp5xroA&start_radio=1" target="_blank" rel="noopener" class="proj-item" data-cat="video" style="grid-column: 2 / span 2; aspect-ratio: 16/9; text-decoration: none;">
+        <div class="proj-ph">
+          <img src="radio faro.JPG" alt="Radio Faro Vol.1 — Julia Rodríguez" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">Videoclip</p>
+          <h3 class="proj-name">Radio Faro Vol.1 &nbsp;·&nbsp; Julia Rodríguez &nbsp;·&nbsp; Gran Canaria, 2025</h3>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -744,8 +880,28 @@
       <div class="sec-rule"></div>
     </div>
     <div class="webs-grid">
-      <div class="proj-item"><div class="proj-ph" style="background:linear-gradient(135deg,#e3daf0,#d5c8e6);"><span class="proj-ph-icon">🌐</span><span class="proj-ph-txt">Captura de web aquí</span></div><div class="proj-overlay"><p class="proj-cat">WordPress · Diseño</p><h3 class="proj-name">Web para cliente</h3></div></div>
-      <div class="proj-item"><div class="proj-ph" style="background:linear-gradient(135deg,#dbd2ee,#cfc5e4);"><span class="proj-ph-icon">🌐</span><span class="proj-ph-txt">Captura de web aquí</span></div><div class="proj-overlay"><p class="proj-cat">Diseño · Desarrollo</p><h3 class="proj-name">Web para artista</h3></div></div>
+      <div class="proj-item">
+        <div class="proj-ph">
+          <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+            <source src="baremis web.mp4" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">WordPress &nbsp;·&nbsp; Diseño</p>
+          <h3 class="proj-name">Web para cliente</h3>
+        </div>
+      </div>
+      <div class="proj-item">
+        <div class="proj-ph">
+          <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+            <source src="angeles web.mp4" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="proj-overlay">
+          <p class="proj-cat">WordPress &nbsp;·&nbsp; Diseño</p>
+          <h3 class="proj-name">Web para cliente</h3>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -757,11 +913,14 @@
       <p class="sec-label">Materiales</p>
       <h2 class="sec-title">Dossieres</h2>
       <div class="sec-rule"></div>
+      <p style="font-size:.98rem; color:var(--ink2); line-height:1.75; max-width:720px; margin-bottom:3rem;">
+        Diseño todo tipo de archivos digitales para marcas, empresas y profesionales: dossieres, menús, flyers, infografías, workbooks, presentaciones, CVs, tarjetas de presentación y mucho más. Si lo podés imaginar en PDF o diseño digital, lo hacemos realidad — con identidad visual coherente y un resultado que comunica desde el primer vistazo.
+      </p>
     </div>
     <div class="dos-grid">
-      <div class="dos-card"><span class="dos-type">Musical / EPK</span><h3 class="dos-title">Dossier de artista</h3><p class="dos-desc">Presentación visual y narrativa completa: bio, discografía, prensa y rider técnico.</p><span class="dos-cta">Ver ejemplo</span></div>
-      <div class="dos-card"><span class="dos-type">Corporativo</span><h3 class="dos-title">Dossier de empresa</h3><p class="dos-desc">Presentación institucional: valores, servicios, equipo y casos de éxito con identidad visual cohesionada.</p><span class="dos-cta">Ver ejemplo</span></div>
-      <div class="dos-card"><span class="dos-type">Marca Personal</span><h3 class="dos-title">Dossier personal</h3><p class="dos-desc">Para creadores y freelancers que necesitan comunicar quiénes son y qué ofrecen de forma memorable.</p><span class="dos-cta">Ver ejemplo</span></div>
+      <a href="TRIO DE RAIZ - DOSSIER MUSICAL.pdf" target="_blank" rel="noopener" class="dos-card" style="text-decoration: none;"><span class="dos-type">Musical / EPK</span><h3 class="dos-title">Dossier de artista</h3><p class="dos-desc">Presentación visual y narrativa completa: bio, discografía, prensa y rider técnico.</p><span class="dos-cta">Ver ejemplo</span></a>
+      <a href="Dossier de Empresa Esencia Energía.pdf" target="_blank" rel="noopener" class="dos-card" style="text-decoration: none;"><span class="dos-type">Corporativo</span><h3 class="dos-title">Dossier de empresa</h3><p class="dos-desc">Presentación institucional: valores, servicios, equipo y casos de éxito con identidad visual cohesionada.</p><span class="dos-cta">Ver ejemplo</span></a>
+      <a href="Branding Marketing con Kairova.pdf" target="_blank" rel="noopener" class="dos-card" style="text-decoration: none;"><span class="dos-type">Branding &amp; Marketing</span><h3 class="dos-title">Manual de identidad de marca</h3><p class="dos-desc">Guía completa de identidad visual y estrategia de marca: paleta, tipografía, tono de comunicación y lineamientos de uso para una presencia coherente en todos los canales.</p><span class="dos-cta">Ver ejemplo</span></a>
     </div>
   </div>
 </section>
@@ -779,7 +938,7 @@
       <div class="srv-card"><span class="srv-num">02</span><p class="srv-label">Redes Sociales</p><h3 class="srv-title">Redes & Community Manager</h3><p class="srv-desc">Gestión integral de redes, creación de plantillas, estrategia de contenido, edición y publicación. Cartera activa desde 2021.</p></div>
       <div class="srv-card"><span class="srv-num">03</span><p class="srv-label">Marketing</p><h3 class="srv-title">Marketing & Estrategia</h3><p class="srv-desc">Estrategias digitales, publicidad, bajada de ideas y planificación de contenido alineada con tus objetivos de marca.</p></div>
       <div class="srv-card"><span class="srv-num">04</span><p class="srv-label">Desarrollo Web</p><h3 class="srv-title">Páginas Web</h3><p class="srv-desc">Desarrollo y diseño de sitios web para marcas, artistas y empresas. Desde la arquitectura hasta el lanzamiento.</p></div>
-      <div class="srv-card"><span class="srv-num">05</span><p class="srv-label">Eventos</p><h3 class="srv-title">Producción de Eventos</h3><p class="srv-desc">Cobertura fotográfica y audiovisual. Experiencia en Animayo Gran Canaria 2024 y 2025, y Creative Mornings LPA.</p></div>
+      <div class="srv-card"><span class="srv-num">05</span><p class="srv-label">Eventos</p><h3 class="srv-title">Producción de Eventos</h3><p class="srv-desc">Producción, coordinación y cobertura de eventos. Trabajo como host, coordinadora de grupos, apoyo logístico y presencia en sala. También cobertura fotográfica y audiovisual completa del evento.</p></div>
       <div class="srv-card"><span class="srv-num">06</span><p class="srv-label">Materiales</p><h3 class="srv-title">Dossieres & Materiales</h3><p class="srv-desc">Dossieres musicales y corporativos con identidad visual cohesionada y narrativa potente.</p></div>
     </div>
   </div>
@@ -815,8 +974,8 @@
   <div class="container">
     <div class="historia-grid">
       <div class="reveal">
-        <p class="sec-label">Mi historia</p>
-        <h2 class="sec-title">Nací cocinera.<br/>La pandemia me reinventó.</h2>
+        <p class="sec-label">Mi historia profesional
+        <h2 class="sec-title">Primero cocina. Luego pandemia.</h2>
         <div class="sec-rule"></div>
         <div class="historia-body">
           <p>Pasé años estudiando y ejerciendo la cocina — era mi mundo, mi forma de crear desde cero. Pero cuando el 2020 lo paralizó todo, me encontré frente a una pantalla sin saber qué hacer con ese tiempo. <strong>Así que estudié.</strong></p>
@@ -831,21 +990,6 @@
           </div>
         </div>
 
-        <!-- CATERING — puente, no protagonista -->
-        <div class="catering-bridge">
-          <p class="catering-bridge-label">Y también</p>
-          <div class="catering-card">
-            <span class="catering-icon">🍴</span>
-            <div class="catering-body">
-              <h3>Catering Caba</h3>
-              <p>La cocina nunca se fue. Soy socia de un proyecto de catering donde además de cocinar llevo las fotos, el contenido y las redes. Una disciplina más que convive con todo lo demás.</p>
-            </div>
-            <div class="catering-links">
-              <a href="#" class="catering-link">Web <span class="arr">→</span></a>
-              <a href="#" class="catering-link">Instagram <span class="arr">→</span></a>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="timeline">
@@ -853,8 +997,27 @@
         <div class="tl-item"><span class="tl-year">2020</span><div class="tl-dot"></div><div class="tl-body"><strong>La reinvención</strong><p>Pandemia. Encierro. Estudio autodidacta de foto, video, marketing y web.</p></div></div>
         <div class="tl-item"><span class="tl-year">2021</span><div class="tl-dot"></div><div class="tl-body"><strong>Primeros clientes</strong><p>Fotos a locales y productos. Primeras redes gestionadas. El boom digital.</p></div></div>
         <div class="tl-item"><span class="tl-year">2022–23</span><div class="tl-dot"></div><div class="tl-body"><strong>Estudio en expansión</strong><p>Videos musicales, dossieres, producción de eventos, webs, cartera estable.</p></div></div>
-        <div class="tl-item"><span class="tl-year">2024–25</span><div class="tl-dot"></div><div class="tl-body"><strong>Animayo & grandes eventos</strong><p>Fotógrafa oficial de Animayo Gran Canaria. Coaching 1:1 para creadores.</p></div></div>
+        <div class="tl-item"><span class="tl-year">2024–25</span><div class="tl-dot"></div><div class="tl-body"><strong>Animayo & grandes eventos</strong><p>Fotógrafa de Animayo Gran Canaria. Coaching 1:1 para creadores.</p></div></div>
+        <div class="tl-item"><span class="tl-year">2026</span><div class="tl-dot"></div><div class="tl-body"><strong>Producción en Animayo</strong><p>Salto a la producción del festival como host de invitados internacionales.</p></div></div>
         <div class="tl-item"><span class="tl-year">Hoy</span><div class="tl-dot" style="border-color:var(--amethyst);background:var(--amethyst);"></div><div class="tl-body"><strong>Co-host Creative Mornings</strong><p>Comunidad, charlas, acompañamiento. Estudio Caba en pleno vuelo.</p></div></div>
+      </div>
+    </div>
+
+    <!-- CATERING — ancho completo bajo el grid -->
+    <div class="catering-bridge">
+      <p class="catering-bridge-label">Y también</p>
+      <div class="catering-card" style="grid-template-columns: 1fr 2fr;">
+        <img src="logo derambulle.png" alt="De Rambullé" style="width:100%;max-width:220px;height:auto;object-fit:contain;justify-self:center;"/>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="catering-body">
+            <h3>De Rambullé</h3>
+            <p>DeRambullé no es solo catering. Es la historia de dos uruguayos — Camila y Federico Berriel — que empezaron cocinando para amistades, en una mesa pequeña, y terminaron llenando de sabor celebraciones cada vez más grandes. Cada evento es una receta a medida: menús para fiestas, encuentros corporativos y servicios especiales, escuchando la historia de cada cliente. Además de cocinar, llevo las fotos, el contenido y las redes.</p>
+          </div>
+          <div class="catering-links" style="align-items:flex-start;">
+            <a href="https://beacons.ai/derambulle" target="_blank" rel="noopener" class="catering-link">Web <span class="arr">→</span></a>
+            <a href="https://www.instagram.com/de.rambulle/" target="_blank" rel="noopener" class="catering-link">Instagram <span class="arr">→</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -914,11 +1077,25 @@
   document.querySelectorAll('.pillar').forEach((el,i)   => el.style.transitionDelay = i*.1+'s');
   document.querySelectorAll('.dos-card').forEach((el,i) => el.style.transitionDelay = i*.09+'s');
 
-  // Tabs
+  // Tabs — filtro con fade
   document.querySelectorAll('.ptab').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      const items = document.querySelectorAll('.proj-grid .proj-item');
+      // fade out
+      items.forEach(item => { item.style.opacity = '0'; });
+      setTimeout(() => {
+        items.forEach(item => {
+          if (!filter || item.dataset.cat === filter) {
+            item.style.display = '';
+            requestAnimationFrame(() => { item.style.opacity = '1'; });
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }, 300);
     });
   });
 </script>
