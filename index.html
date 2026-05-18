@@ -20,7 +20,7 @@
       --ame-pale:  #b59acc;
       --ame-faint: #110c18;
       --white:     #f2ede4;
-      --muted:     rgba(242,237,228,.42);
+      --muted:     rgba(242,237,228,.62);
       --border:    rgba(242,237,228,.09);
       --f-display: 'Literata', serif;
       --f-body:    'Poppins', sans-serif;
@@ -589,7 +589,7 @@
     }
     .foot-brand { font-family: var(--f-display); font-size: .9rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--white); }
     .foot-brand span { color: var(--ame-light); }
-    .foot-copy { font-family: var(--f-body); font-size: .68rem; color: rgba(255,255,255,.22); }
+    .foot-copy { font-family: var(--f-body); font-size: .68rem; color: rgba(255,255,255,.52); }
 
     /* ─────────────────────────────────────────
        REVEAL
@@ -608,7 +608,10 @@
       section:not(#hero) { padding: 4rem 0; }
       .container { padding: 0 1.5rem; }
       #hero { padding: 5rem 1.5rem 4rem; }
-      .historia-grid, .coaching-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .historia-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .historia-grid > .foto-mia-wrap { min-height: 320px; }
+      .historia-grid > .foto-mia-wrap .foto-mia-frame { height: 320px; }
+      .coaching-grid { grid-template-columns: 1fr; gap: 3rem; }
       .proj-grid { grid-template-columns: repeat(2,1fr); }
       .proj-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
       .webs-grid { grid-template-columns: 1fr 1fr; }
@@ -618,18 +621,20 @@
       .catering-links { grid-column: 1/-1; flex-direction: row; }
       .pillar-num { font-size: 2rem; }
       footer { flex-direction: column; gap: .75rem; text-align: center; padding: 1.5rem; }
+      .timeline { margin-top: 2.5rem; }
+      .tl-item { min-width: 100px; }
+      .hero-studio { font-size: clamp(1rem, 3.5vw, 2rem); }
     }
 
     /* ── Mobile (≤640px) ── */
     @media (max-width: 640px) {
       nav { padding: 0 1.2rem; height: 52px; }
-      .nav-logo { font-size: .95rem; letter-spacing: .1em; }
-      #hero { padding: 4.5rem 1.2rem 3.5rem; min-height: 85vh; }
-      .hero-title { font-size: clamp(2.8rem, 14vw, 4.5rem); }
-      .hero-title-sub { font-size: .88rem; letter-spacing: .08em; }
-      .hero-tagline { font-size: .92rem; }
-      .hero-eyebrow { font-size: .62rem; letter-spacing: .12em; }
-      .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
+      .nav-logo { font-size: .95rem; letter-spacing: .04em; }
+      #hero { padding: 4.5rem 1.2rem 3.5rem; min-height: 90vh; }
+      .hero-title { font-size: clamp(2.6rem, 13vw, 4rem); transform: skewX(-10deg); }
+      .hero-studio { font-size: clamp(.95rem, 5.5vw, 1.5rem); letter-spacing: .08em; gap: .6rem; }
+      .hero-studio::before, .hero-studio::after { display: none; }
+      .hero-studio .orn { display: none; }
       .btn-primary { padding: .85rem 1.8rem; font-size: .75rem; }
       .sec-title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
       .proj-grid { grid-template-columns: 1fr; }
@@ -637,26 +642,35 @@
       .webs-grid { grid-template-columns: 1fr; }
       .srv-grid { grid-template-columns: 1fr; }
       .dos-grid { grid-template-columns: 1fr; }
-      .tl-year { min-width: 46px; font-size: .62rem; }
-      .pull-quote { font-size: .95rem; padding: 1rem 1.2rem; }
+      .historia-grid > .foto-mia-wrap { min-height: 260px; }
+      .historia-grid > .foto-mia-wrap .foto-mia-frame { height: 260px; }
+      .timeline { margin-top: 2rem; }
+      .tl-item { min-width: 84px; padding: 0 .3rem; }
+      .tl-body strong { font-size: .65rem; }
+      .tl-body p { font-size: .58rem; }
+      .pull-quote { font-size: .9rem; padding: 1rem 1.2rem; }
       .catering-card { grid-template-columns: 1fr; gap: 1rem; }
       .catering-icon { font-size: 2rem; }
       .catering-links { flex-direction: row; }
       .coaching-grid { gap: 2rem; }
       .pillar-num { font-size: 1.8rem; min-width: 2rem; }
-      .contacto-email { font-size: clamp(1.1rem, 5vw, 1.6rem); }
+      .contacto-email { font-size: clamp(1rem, 4.5vw, 1.5rem); }
       .social-links { flex-direction: column; align-items: stretch; }
       .social-link { text-align: center; }
       footer { padding: 1.2rem 1rem; }
+      .story-card { padding: 1.8rem; }
+      .sec-rule { margin-bottom: 2rem; }
     }
 
     /* ── Mobile pequeño (≤380px) ── */
     @media (max-width: 380px) {
       .container { padding: 0 1rem; }
       nav { padding: 0 1rem; }
-      .hero-title { font-size: clamp(2.4rem, 16vw, 3.2rem); }
+      .hero-title { font-size: clamp(2.2rem, 14vw, 3rem); transform: skewX(-8deg); }
+      .hero-studio { font-size: clamp(.85rem, 5vw, 1.2rem); }
       .btn-primary { padding: .8rem 1.4rem; font-size: .7rem; letter-spacing: .1em; }
       .sec-title { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+      .tl-item { min-width: 72px; }
     }
 
     /* ── HAMBURGER & MOBILE MENU ── */
@@ -690,7 +704,7 @@
     .nav-mobile-link {
       font-family: var(--f-cond); font-size: .85rem; font-weight: 700;
       letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(242,237,228,.45); text-decoration: none;
+      color: rgba(242,237,228,.88); text-decoration: none;
       padding: 1rem 1.5rem;
       border-bottom: 1px solid var(--border);
       transition: color .2s, background .2s;
@@ -1093,7 +1107,7 @@
       <h2 class="sec-title">¿Trabajamos juntos?</h2>
       <div class="sec-rule" style="background:var(--ame-light); margin: 1rem auto 2rem;"></div>
       <p class="contacto-tag">Del caos creativo a una presencia digital memorable.</p>
-      <p style="color:rgba(255,255,255,.4); font-size:.85rem; margin-bottom:1.5rem; font-family:var(--f-cond); letter-spacing:.08em; text-transform:uppercase;">Si querés saber más, colaborar, o simplemente conectar —</p>
+      <p style="color:rgba(255,255,255,.68); font-size:.85rem; margin-bottom:1.5rem; font-family:var(--f-cond); letter-spacing:.08em; text-transform:uppercase;">Si querés saber más, colaborar, o simplemente conectar —</p>
       <a href="mailto:holaestudiocaba@gmail.com" class="contacto-email">holaestudiocaba@gmail.com</a>
       <div class="social-links">
         <a href="https://www.instagram.com/estudiocabalpa/" target="_blank" rel="noopener" class="social-link">Instagram</a>
