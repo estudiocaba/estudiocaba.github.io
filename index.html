@@ -218,7 +218,7 @@
     .sec-label {
       font-family: var(--f-cond); font-size: .62rem; font-weight: 700;
       letter-spacing: .38em; text-transform: uppercase;
-      color: var(--ame-light); margin-bottom: .6rem;
+      color: var(--ame-pale); margin-bottom: .6rem;
       display: flex; align-items: center; gap: .7rem;
     }
     .sec-label::before { content:'◆'; font-size: .45rem; }
@@ -241,7 +241,7 @@
     #coaching .story-card {
       background: #080808; color: var(--ink);
     }
-    #coaching .story-card .sec-label { color: var(--ame-light); }
+    #coaching .story-card .sec-label { color: var(--ame-pale); }
     #coaching .story-card .sec-title { color: var(--ink); font-weight: 500; }
     #coaching .coaching-body p { color: var(--ink2); }
     #coaching .coaching-body p strong { color: var(--ink); }
@@ -250,7 +250,7 @@
     #historia .story-card {
       background: var(--bg2); color: var(--ink);
     }
-    #historia .story-card .sec-label { color: var(--ame-light); }
+    #historia .story-card .sec-label { color: var(--ame-pale); }
     #historia .story-card .sec-title { color: var(--ink); font-weight: 500; }
     #historia .historia-body p { color: var(--ink2); }
     #historia .historia-body p strong { color: var(--ink); }
@@ -274,7 +274,7 @@
       border-bottom: 2px solid transparent; margin-bottom: -2px;
       transition: color .2s, border-color .2s; flex-shrink: 0;
     }
-    .ptab.active, .ptab:hover { color: var(--amethyst); border-bottom-color: var(--amethyst); }
+    .ptab.active, .ptab:hover { color: var(--ame-pale); border-bottom-color: var(--amethyst); }
     .proj-grid {
       display: grid; grid-template-columns: repeat(3,1fr);
       gap: 3px; background: var(--border); width: 100%;
@@ -503,7 +503,7 @@
       transition: opacity .5s ease, transform .5s ease;
     }
     .tl-item.visible { opacity: 1; transform: translateY(0); }
-    .tl-year { font-family: var(--f-cond); font-size: .55rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--amethyst); text-align: center; white-space: nowrap; margin-bottom: .6rem; }
+    .tl-year { font-family: var(--f-cond); font-size: .55rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ame-pale); text-align: center; white-space: nowrap; margin-bottom: .6rem; }
     .tl-dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; border: 2px solid var(--amethyst); background: var(--bg2); z-index: 1; position: relative; margin-bottom: .8rem; flex-shrink: 0; }
     .tl-item.visible .tl-dot { background: var(--amethyst); }
     .tl-body { text-align: center; }
@@ -719,12 +719,24 @@
     @media (max-width: 640px) {
       .nav-mobile { top: 52px; }
     }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      padding: .55rem 1.2rem;
+      background: var(--amethyst); color: var(--white);
+      font-family: var(--f-body); font-size: .9rem; font-weight: 600;
+      text-decoration: none; z-index: 10000;
+      border-radius: 0 0 4px 4px;
+      transition: top .15s;
+    }
+    .skip-link:focus { top: 0; outline: 3px solid var(--ame-pale); outline-offset: 2px; }
   </style>
 </head>
 <body>
 
 <!-- ── SVG BAT CURSOR ── -->
-<div id="bat">
+<div id="bat" aria-hidden="true">
   <svg viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <style>
@@ -801,8 +813,10 @@
   </svg>
 </div>
 
+<a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Navegación principal">
   <a href="#hero" class="nav-logo">Estudio <span>Caba</span></a>
   <ul class="nav-links">
     <li><a href="#proyectos">Proyectos</a></li>
@@ -812,42 +826,44 @@
     <li><a href="#historia">Historia</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menú">
+  <button class="nav-burger" id="navBurger" aria-label="Menú" aria-expanded="false" aria-controls="navMobile">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MENÚ MÓVIL -->
-<div class="nav-mobile" id="navMobile">
+<nav class="nav-mobile" id="navMobile" aria-label="Menú móvil" aria-hidden="true">
   <a href="#proyectos" class="nav-mobile-link">Proyectos</a>
   <a href="#servicios" class="nav-mobile-link">Servicios</a>
   <a href="#coaching"  class="nav-mobile-link">Coaching</a>
   <a href="#dossieres" class="nav-mobile-link">Dossieres</a>
   <a href="#historia"  class="nav-mobile-link">Historia</a>
   <a href="#contacto"  class="nav-mobile-link">Contacto</a>
-</div>
+</nav>
+
+<main id="contenido-principal">
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-label="Portada">
   <h1 class="hero-title">Camila González</h1>
-  <p class="hero-studio"><span class="orn">✦</span>Estudio Caba<span class="orn">✦</span></p>
-  <a href="#proyectos" class="btn-primary">Ver mi trabajo <span class="arr">→</span></a>
+  <p class="hero-studio"><span class="orn" aria-hidden="true">✦</span>Estudio Caba<span class="orn" aria-hidden="true">✦</span></p>
+  <a href="#proyectos" class="btn-primary">Ver mi trabajo <span class="arr" aria-hidden="true">→</span></a>
 </section>
 
 <!-- ═══ 1. PROYECTOS ═══ -->
-<section id="proyectos" class="band-white">
+<section id="proyectos" class="band-white" aria-labelledby="tit-proyectos">
   <div class="container">
     <div class="reveal">
       <p class="sec-label">Portfolio visual</p>
-      <h2 class="sec-title">Proyectos</h2>
+      <h2 class="sec-title" id="tit-proyectos">Proyectos</h2>
       <div class="sec-rule"></div>
     </div>
-    <div class="proj-tabs">
-      <button class="ptab active" data-filter="">Todo</button>
-      <button class="ptab" data-filter="fotografia">Fotografía</button>
-      <button class="ptab" data-filter="video">Video</button>
-      <button class="ptab" data-filter="eventos">Eventos</button>
-      <button class="ptab" data-filter="redes">Redes</button>
+    <div class="proj-tabs" role="group" aria-label="Filtros de proyectos">
+      <button class="ptab active" data-filter="" aria-pressed="true">Todo</button>
+      <button class="ptab" data-filter="fotografia" aria-pressed="false">Fotografía</button>
+      <button class="ptab" data-filter="video" aria-pressed="false">Video</button>
+      <button class="ptab" data-filter="eventos" aria-pressed="false">Eventos</button>
+      <button class="ptab" data-filter="redes" aria-pressed="false">Redes</button>
     </div>
     <div class="proj-grid">
       <a href="https://www.behance.net/gallery/249382183/Djame-ser-mi-propio-testimonio-Sin-editar" target="_blank" rel="noopener" class="proj-item" data-cat="fotografia" style="text-decoration: none;">
@@ -953,9 +969,9 @@
       <div class="sec-rule"></div>
     </div>
     <div class="webs-grid">
-      <div class="proj-item">
+      <div class="proj-item" aria-label="Proyecto web: Baremis — WordPress, diseño">
         <div class="proj-ph">
-          <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <video autoplay muted loop playsinline aria-hidden="true" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
             <source src="baremis web.mp4" type="video/mp4"/>
           </video>
         </div>
@@ -964,9 +980,9 @@
           <h3 class="proj-name">Web para cliente</h3>
         </div>
       </div>
-      <div class="proj-item">
+      <div class="proj-item" aria-label="Proyecto web: Ángeles — WordPress, diseño">
         <div class="proj-ph">
-          <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <video autoplay muted loop playsinline aria-hidden="true" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
             <source src="angeles web.mp4" type="video/mp4"/>
           </video>
         </div>
@@ -980,11 +996,11 @@
 </section>
 
 <!-- DOSSIERES -->
-<section id="dossieres" class="band-dark">
+<section id="dossieres" class="band-dark" aria-labelledby="tit-dossieres">
   <div class="container">
     <div class="reveal">
       <p class="sec-label">Materiales</p>
-      <h2 class="sec-title">Dossieres</h2>
+      <h2 class="sec-title" id="tit-dossieres">Dossieres</h2>
       <div class="sec-rule"></div>
       <p style="font-size:.98rem; color:var(--ink2); line-height:1.75; max-width:620px; margin-bottom:3rem;">
         Diseño archivos digitales para marcas y profesionales: menús, flyers, presentaciones, CVs, workbooks y más. Identidad visual coherente, resultado impecable.
@@ -999,11 +1015,11 @@
 </section>
 
 <!-- ═══ 2. SERVICIOS ═══ -->
-<section id="servicios" class="band-egg">
+<section id="servicios" class="band-egg" aria-labelledby="tit-servicios">
   <div class="container">
     <div class="reveal">
       <p class="sec-label">Qué hago</p>
-      <h2 class="sec-title">Servicios</h2>
+      <h2 class="sec-title" id="tit-servicios">Servicios</h2>
       <div class="sec-rule"></div>
     </div>
     <div class="srv-grid">
@@ -1018,13 +1034,13 @@
 </section>
 
 <!-- COACHING -->
-<section id="coaching" class="band-dark">
+<section id="coaching" class="band-dark" aria-labelledby="tit-coaching">
   <div class="container">
     <div class="coaching-grid">
       <div class="reveal">
         <div class="story-card">
           <p class="sec-label">Para creadores de contenido</p>
-          <h2 class="sec-title">Coaching</h2>
+          <h2 class="sec-title" id="tit-coaching">Coaching</h2>
           <div class="sec-rule"></div>
           <div class="coaching-body">
             <p>Después de años trabajando con clientes en redes, siempre se repetían las mismas preguntas. Creadores con talento, con ideas, con ganas — pero sin saber por dónde empezar.</p>
@@ -1045,7 +1061,7 @@
 </section>
 
 <!-- ═══ 3. HISTORIA + CATERING ═══ -->
-<section id="historia" class="band-light">
+<section id="historia" class="band-light" aria-labelledby="tit-historia">
   <div class="container">
     <div class="historia-grid">
       <div class="foto-mia-wrap reveal">
@@ -1056,7 +1072,7 @@
       <div class="reveal">
         <div class="story-card">
         <p class="sec-label">Mi historia</p>
-        <h2 class="sec-title">Primero cocina. Luego pandemia.</h2>
+        <h2 class="sec-title" id="tit-historia">Primero cocina. Luego pandemia.</h2>
         <div class="sec-rule"></div>
         <div class="historia-body">
           <p>Pasé años estudiando y ejerciendo la cocina — era mi mundo, mi forma de crear desde cero. Pero cuando el 2020 lo paralizó todo, me encontré frente a una pantalla sin saber qué hacer con ese tiempo. <strong>Así que estudié.</strong></p>
@@ -1090,8 +1106,8 @@
             <p>DeRambullé no es solo catering. Es la historia de dos uruguayos — Camila y Federico Berriel — que empezaron cocinando para amistades, en una mesa pequeña, y terminaron llenando de sabor celebraciones cada vez más grandes. Cada evento es una receta a medida: menús para fiestas, encuentros corporativos y servicios especiales, escuchando la historia de cada cliente. Además de cocinar, llevo las fotos, el contenido y las redes.</p>
           </div>
           <div class="catering-links" style="align-items:flex-start;">
-            <a href="https://beacons.ai/derambulle" target="_blank" rel="noopener" class="catering-link">Web <span class="arr">→</span></a>
-            <a href="https://www.instagram.com/de.rambulle/" target="_blank" rel="noopener" class="catering-link">Instagram <span class="arr">→</span></a>
+            <a href="https://beacons.ai/derambulle" target="_blank" rel="noopener" class="catering-link">Web <span class="arr" aria-hidden="true">→</span></a>
+            <a href="https://www.instagram.com/de.rambulle/" target="_blank" rel="noopener" class="catering-link">Instagram <span class="arr" aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -1100,11 +1116,11 @@
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="band-dark">
+<section id="contacto" class="band-dark" aria-labelledby="tit-contacto">
   <div class="container">
     <div class="contacto-wrap reveal">
       <p class="sec-label">Hablemos</p>
-      <h2 class="sec-title">¿Trabajamos juntos?</h2>
+      <h2 class="sec-title" id="tit-contacto">¿Trabajamos juntos?</h2>
       <div class="sec-rule" style="background:var(--ame-light); margin: 1rem auto 2rem;"></div>
       <p class="contacto-tag">Del caos creativo a una presencia digital memorable.</p>
       <p style="color:rgba(255,255,255,.68); font-size:.85rem; margin-bottom:1.5rem; font-family:var(--f-cond); letter-spacing:.08em; text-transform:uppercase;">Si querés saber más, colaborar, o simplemente conectar —</p>
@@ -1117,6 +1133,8 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <span class="foot-brand">Estudio <span>Caba</span></span>
   <span class="foot-copy">© 2025 Camila González · Las Palmas de Gran Canaria</span>
@@ -1127,14 +1145,18 @@
   const burger    = document.getElementById('navBurger');
   const mobileNav = document.getElementById('navMobile');
   burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
+    const isOpen = burger.classList.toggle('open');
     mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
   });
   // cerrar al hacer click en un link
   document.querySelectorAll('.nav-mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       burger.classList.remove('open');
       mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
     });
   });
   document.addEventListener('mousemove', e => {
@@ -1155,8 +1177,12 @@
   // Tabs — filtro con fade
   document.querySelectorAll('.ptab').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.ptab').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       const filter = btn.dataset.filter;
       const items = document.querySelectorAll('.proj-grid .proj-item');
       // fade out
