@@ -636,23 +636,44 @@
       nav { padding: 0 1.2rem; height: 52px; }
       .nav-logo { font-size: .95rem; letter-spacing: .04em; }
       #hero { padding: 4.5rem 1.2rem 3.5rem; min-height: 90vh; }
+      .hero-eyebrow { white-space: normal; text-align: center; font-size: .6rem; letter-spacing: .12em; padding: 0 1.5rem; }
       .hero-title { font-size: clamp(2.6rem, 13vw, 4rem); transform: skewX(-10deg); }
       .hero-studio { font-size: clamp(.95rem, 5.5vw, 1.5rem); letter-spacing: .08em; gap: .6rem; }
       .hero-studio::before, .hero-studio::after { display: none; }
       .hero-studio .orn { display: none; }
       .btn-primary { padding: .85rem 1.8rem; font-size: .75rem; }
       .sec-title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
-      .proj-grid { grid-template-columns: 1fr; }
-      .proj-item:nth-child(1) { grid-column: span 1; aspect-ratio: 4/3; }
+      .proj-grid { grid-template-columns: 1fr 1fr; }
+      .proj-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
       .webs-grid { grid-template-columns: 1fr; }
       .srv-grid { grid-template-columns: 1fr; }
       .dos-grid { grid-template-columns: 1fr; }
       .historia-grid > .foto-mia-wrap { min-height: 260px; }
       .historia-grid > .foto-mia-wrap .foto-mia-frame { height: 260px; }
-      .timeline { margin-top: 2rem; }
-      .tl-item { min-width: 84px; padding: 0 .3rem; }
-      .tl-body strong { font-size: .65rem; }
-      .tl-body p { font-size: .58rem; }
+      /* Timeline vertical en móvil */
+      .timeline {
+        flex-direction: column; overflow-x: visible; margin-top: 2rem;
+      }
+      .timeline::before { display: none; }
+      .tl-item {
+        flex-direction: row; align-items: flex-start;
+        min-width: unset; width: 100%;
+        padding: 0 0 1.4rem .8rem;
+        border-left: 1px solid var(--border);
+        position: relative; gap: .6rem;
+      }
+      .tl-item:last-child { padding-bottom: 0; }
+      .tl-dot {
+        position: absolute; left: -5px; top: .15rem;
+        margin-bottom: 0; flex-shrink: 0;
+      }
+      .tl-year {
+        min-width: 3rem; text-align: right; flex-shrink: 0;
+        margin-bottom: 0; font-size: .5rem; padding-top: .05rem;
+      }
+      .tl-body { text-align: left; flex: 1; }
+      .tl-body strong { font-size: .68rem; }
+      .tl-body p { font-size: .6rem; }
       .pull-quote { font-size: .9rem; padding: 1rem 1.2rem; }
       .catering-card { grid-template-columns: 1fr; gap: 1rem; }
       .catering-icon { font-size: 2rem; }
@@ -675,7 +696,6 @@
       .hero-studio { font-size: clamp(.85rem, 5vw, 1.2rem); }
       .btn-primary { padding: .8rem 1.4rem; font-size: .7rem; letter-spacing: .1em; }
       .sec-title { font-size: clamp(1.6rem, 8vw, 2.2rem); }
-      .tl-item { min-width: 72px; }
     }
 
     /* ── HAMBURGER & MOBILE MENU ── */
@@ -1105,7 +1125,7 @@
     <!-- CATERING — ancho completo bajo el grid -->
     <div class="catering-bridge">
       <p class="catering-bridge-label">Y también</p>
-      <div class="catering-card" style="grid-template-columns: 1fr 2fr;">
+      <div class="catering-card">
         <img src="logo derambulle.png" alt="DeRambullé — Catering para eventos en Las Palmas de Gran Canaria" style="width:100%;max-width:380px;height:auto;object-fit:contain;justify-self:center;"/>
         <div style="display:flex;flex-direction:column;gap:1rem;">
           <div class="catering-body">
