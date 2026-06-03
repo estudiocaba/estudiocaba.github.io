@@ -635,11 +635,13 @@
     @media (max-width: 640px) {
       nav { padding: 0 1.2rem; height: 52px; }
       .nav-logo { font-size: .95rem; letter-spacing: .04em; }
-      #hero { padding: 4.5rem 1.2rem 3.5rem; min-height: 90vh; }
-      .hero-eyebrow { white-space: normal; text-align: center; font-size: .6rem; letter-spacing: .12em; padding: 0 1.5rem; }
+      #hero { padding: 4.5rem 1.2rem 3.5rem; min-height: 90vh; background-size: auto 70%; }
+      .hero-eyebrow { display: block; text-align: center; white-space: normal; font-size: .6rem; letter-spacing: .12em; padding: 0 1.5rem; }
+      .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
+      .eyebrow-sep { display: none; }
+      .eyebrow-geo { display: block; }
       .hero-title { font-size: clamp(2.6rem, 13vw, 4rem); transform: skewX(-10deg); }
       .hero-studio { font-size: clamp(.95rem, 5.5vw, 1.5rem); letter-spacing: .08em; gap: .6rem; }
-      .hero-studio::before, .hero-studio::after { display: none; }
       .hero-studio .orn { display: none; }
       .btn-primary { padding: .85rem 1.8rem; font-size: .75rem; }
       .sec-title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
@@ -870,7 +872,7 @@
 
 <!-- HERO -->
 <section id="hero" aria-label="Portada">
-  <p class="hero-eyebrow">Fotografía · Redes · Estrategia Digital · Las Palmas de Gran Canaria</p>
+  <p class="hero-eyebrow">Fotografía · Redes · Estrategia Digital<span class="eyebrow-sep"> · </span><span class="eyebrow-geo">Las Palmas de Gran Canaria</span></p>
   <h1 class="hero-title">Camila González</h1>
   <p class="hero-studio"><span class="orn" aria-hidden="true">✦</span>Estudio Caba<span class="orn" aria-hidden="true">✦</span></p>
   <a href="#proyectos" class="btn-primary">Ver mi trabajo <span class="arr" aria-hidden="true">→</span></a>
