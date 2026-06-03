@@ -419,7 +419,7 @@
     /* ─────────────────────────────────────────
        COACHING
     ───────────────────────────────────────── */
-    .coaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .coaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .coaching-body p { color: #2a2218; margin-bottom: 1.2rem; font-size: .92rem; }
     .coaching-body p strong { color: #111; font-weight: 700; }
     .coaching-pull {
@@ -440,6 +440,59 @@
     .pillar-num { font-family: var(--f-cond); font-size: 2.8rem; font-weight: 900; color: var(--amethyst); opacity: .35; line-height: 1; min-width: 2.5rem; }
     .pillar-body strong { display: block; font-weight: 700; color: var(--white); margin-bottom: .25rem; font-size: .98rem; }
     .pillar-body p { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.5; margin: 0; }
+    .coaching-bottom {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start; margin-top: 3rem;
+    }
+
+    /* ── MOCKUP LAPTOP ── */
+    .mockup-laptop {
+      width: 100%; margin-top: 2.2rem;
+      transform: perspective(900px) rotateY(-12deg) rotateX(3deg);
+      transform-origin: center center;
+      transition: transform .4s ease;
+    }
+    .mockup-laptop:hover {
+      transform: perspective(900px) rotateY(-6deg) rotateX(1deg);
+    }
+    .mockup-lid {
+      background: #0d0d0d;
+      border: 10px solid #222;
+      border-bottom: 5px solid #1a1a1a;
+      border-radius: 10px 10px 2px 2px;
+      padding: 12px 12px 7px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.05),
+        4px 0 24px rgba(0,0,0,.7),
+        0 8px 40px rgba(0,0,0,.8);
+    }
+    .mockup-lid::before {
+      content: ''; display: block;
+      width: 6px; height: 6px;
+      background: #2e2e2e; border-radius: 50%;
+      margin: 0 auto 10px;
+      box-shadow: 0 0 0 2px #1a1a1a;
+    }
+    .mockup-lid img { width: 100%; display: block; border-radius: 2px; opacity: .85; filter: contrast(1.2) brightness(.65) saturate(.85); }
+    .mockup-base {
+      background: linear-gradient(160deg, #2a2a2a 0%, #181818 60%, #111 100%);
+      height: 20px; border-radius: 0 0 10px 10px;
+      box-shadow: 0 12px 36px rgba(0,0,0,.7), 4px 4px 20px rgba(0,0,0,.5);
+      position: relative;
+    }
+    .mockup-base::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #333, #222, #333);
+    }
+    .mockup-base::after {
+      content: ''; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 26%; height: 8px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 4px;
+    }
 
     /* ─────────────────────────────────────────
        DOSSIERES
@@ -872,7 +925,7 @@
 
 <!-- HERO -->
 <section id="hero" aria-label="Portada">
-  <p class="hero-eyebrow">Fotografía · Redes · Estrategia Digital<span class="eyebrow-sep"> · </span><span class="eyebrow-geo">Las Palmas de Gran Canaria</span></p>
+  <p class="hero-eyebrow">Hago fotos y videos, llevo redes, monto webs y ayudo a otros a comunicar lo que hacen — desde Las Palmas de Gran Canaria.</p>
   <h1 class="hero-title">Camila González</h1>
   <p class="hero-studio"><span class="orn" aria-hidden="true">✦</span>Estudio Caba<span class="orn" aria-hidden="true">✦</span></p>
   <a href="#proyectos" class="btn-primary">Ver mi trabajo <span class="arr" aria-hidden="true">→</span></a>
@@ -1056,12 +1109,12 @@
       <div class="sec-rule"></div>
     </div>
     <div class="srv-grid">
-      <div class="srv-card"><span class="srv-num">01</span><p class="srv-label">Fotografía & Video</p><h3 class="srv-title">Fotografía y Video</h3><p class="srv-desc">Capturo lo que hace especial a tu marca — en locales, eventos, producto o servicio. Con criterio editorial y ojo para el detalle que convierte una foto en una historia.</p></div>
-      <div class="srv-card"><span class="srv-num">02</span><p class="srv-label">Redes Sociales</p><h3 class="srv-title">Redes & Community Manager</h3><p class="srv-desc">Llevo tus redes como si fueran mías: estrategia, contenido, publicación y análisis. Para que tú te centres en tu negocio mientras tu presencia digital crece.</p></div>
-      <div class="srv-card"><span class="srv-num">03</span><p class="srv-label">Marketing</p><h3 class="srv-title">Marketing & Estrategia</h3><p class="srv-desc">Convertimos tus ideas en un plan concreto: estrategia de contenido, publicidad y hoja de ruta clara. Sin humo, con dirección.</p></div>
-      <div class="srv-card"><span class="srv-num">04</span><p class="srv-label">Desarrollo Web</p><h3 class="srv-title">Páginas Web</h3><p class="srv-desc">Diseño y desarrollo tu web desde cero: arquitectura, contenido y lanzamiento. Para que tu presencia online esté a la altura de lo que hacés.</p></div>
-      <div class="srv-card"><span class="srv-num">05</span><p class="srv-label">Eventos</p><h3 class="srv-title">Producción de Eventos</h3><p class="srv-desc">Organizo, coordino y dejo constancia. Desde la logística hasta la cobertura fotográfica y audiovisual completa. Animayo, Creative Mornings y más.</p></div>
-      <div class="srv-card"><span class="srv-num">06</span><p class="srv-label">Materiales</p><h3 class="srv-title">Dossieres & Materiales</h3><p class="srv-desc">Diseño materiales que presentan tu trabajo con claridad y estética: dossieres musicales, corporativos, menús, flyers y presentaciones con identidad visual coherente.</p></div>
+      <div class="srv-card"><span class="srv-num">01</span><p class="srv-label">Fotografía & Video</p><h3 class="srv-title">Fotografía y Video</h3><p class="srv-desc">Fotografía editorial y videos para redes. Trabajo con comercios, marcas, salones, eventos y artistas en Las Palmas. Cada proyecto tiene su propio lenguaje visual — y yo lo encuentro.</p></div>
+      <div class="srv-card"><span class="srv-num">02</span><p class="srv-label">Redes Sociales</p><h3 class="srv-title">Redes & Community Manager</h3><p class="srv-desc">Estrategia, contenido y gestión. Llevo redes de marcas y negocios con cartera estable desde 2021. Tú con lo tuyo, yo con lo mío.</p></div>
+      <div class="srv-card"><span class="srv-num">03</span><p class="srv-label">Marketing</p><h3 class="srv-title">Marketing & Estrategia</h3><p class="srv-desc">Bajada de ideas, planificación de contenido y estrategia de comunicación. Que lo que tenés en la cabeza tenga sentido sobre el papel, y no se quede solo en una idea.</p></div>
+      <div class="srv-card"><span class="srv-num">04</span><p class="srv-label">Desarrollo Web</p><h3 class="srv-title">Páginas Web</h3><p class="srv-desc">Diseño y desarrollo webs. Desde cero hasta publicada, con una estética que encaje con quién eres y qué haces.</p></div>
+      <div class="srv-card"><span class="srv-num">05</span><p class="srv-label">Eventos</p><h3 class="srv-title">Producción de Eventos</h3><p class="srv-desc">Host, coordinadora y producción. Trabajo en eventos de renombre como Animayo y Creative Mornings LPA, al igual que en otros eventos por Las Palmas y la península. Sé moverme en sala y también detrás del objetivo.</p></div>
+      <div class="srv-card"><span class="srv-num">06</span><p class="srv-label">Materiales</p><h3 class="srv-title">Dossieres & Materiales</h3><p class="srv-desc">Dossieres, flyers, menús, presentaciones, tarjetas de negocio, etc. Materiales que se ven bien y cuentan lo que tienen que contar.</p></div>
     </div>
   </div>
 </section>
@@ -1076,11 +1129,10 @@
           <h2 class="sec-title" id="tit-coaching">Coaching</h2>
           <div class="sec-rule"></div>
           <div class="coaching-body">
-            <p>Pensado para artistas, freelancers y emprendedoras creativas que quieren monetizar lo que saben hacer — pero sienten que les falta orden, dirección o confianza para empezar.</p>
-            <p>Después de años trabajando con clientes en redes, siempre se repetían las mismas preguntas. Creadores con talento, con ideas, con ganas — pero sin saber por dónde empezar.</p>
-            <p>Con eso nació este formato: <strong>acompañamiento 1:1</strong> que va mucho más allá de la estrategia técnica. Porque construir una marca personal auténtica requiere también trabajo interno.</p>
-            <div class="coaching-pull">Un mapa que te ayude a entender quién eres, qué puedes ofrecer, cómo mostrarte al mundo — y cómo empezar a hacerlo sin sentirte una impostora.</div>
-            <p>También he dado charlas online para grupos de network marketing. <strong>Me apasiona enseñar y acompañar.</strong></p>
+            <p>Llevo años ayudando a creadores a ordenar lo que tienen en la cabeza y transformarlo en algo real. Trabajo el lado técnico — estrategia, contenido, escalera de valor — y también el personal, porque montar una marca propia tiene mucho de conocerse a una misma y uno mismo.</p>
+            <p>Con un formato íntimo de acompañamiento y trabajo 1:1.</p>
+            <p>También he dado charlas online para grupos de network marketing. Me apasiona enseñar y acompañar.</p>
+            <div class="coaching-pull"><a href="mailto:holaestudiocaba@gmail.com" style="color:inherit; text-decoration:none;">Si sientes que tienes potencial pero no sabes por dónde empezar, es por aquí.</a></div>
           </div>
         </div>
       </div>
@@ -1109,11 +1161,10 @@
         <h2 class="sec-title" id="tit-historia">Primero cocina. Luego pandemia.</h2>
         <div class="sec-rule"></div>
         <div class="historia-body">
-          <p>Pasé años estudiando y ejerciendo la cocina — era mi mundo, mi forma de crear desde cero. Pero cuando el 2020 lo paralizó todo, me encontré frente a una pantalla sin saber qué hacer con ese tiempo. <strong>Así que estudié.</strong></p>
-          <p>Fotografía, video, edición, marketing, redes sociales, páginas web, Lightroom, CapCut, Canva… <em>todo</em>. No por estrategia, sino por curiosidad genuina y necesidad de seguir siendo creativa.</p>
-          <p>Cuando el mundo volvió a moverse, yo tenía herramientas nuevas — y el mercado necesitaba exactamente lo que había aprendido. Las Palmas de Gran Canaria necesitaba presencia digital, y yo podía construirla. <strong>El boom digital había llegado.</strong></p>
-          <div class="pull-quote">Del caos creativo a una presencia digital memorable. ¿Qué herramienta me hubiera gustado tener cuando estaba perdida, con mil ideas, queriendo monetizar mi creatividad?</div>
-          <p>Hoy llevo 5 años trabajando de forma multidisciplinada, construyendo marcas, contando historias y acompañando a otros creadores. <strong>Todo eso es <span class="ec">Estudio Caba</span>. Y si estás aquí, probablemente necesitás exactamente lo que aprendí a construir.</strong></p>
+          <p>Estudié cocina, la ejercí durante años, y cuando llegó la pandemia me encerré con una pantalla a estudiar y estudiar y estudiar… de todo: foto, video, edición, marketing, redes, webs. Por curiosidad (y mucho aburrimiento), no por plan.</p>
+          <p>Cuando el mundo volvió a moverse, resulta que lo que había aprendido era justo lo que los negocios necesitaban. El boom digital. Cinco años después, aquí sigo — con cartera de clientes, proyectos propios y sin dejar de aprender.</p>
+          <div class="pull-quote">Del caos creativo a una presencia digital memorable.</div>
+          <p><strong>Eso es <span class="ec">Estudio Caba</span>. Un estudio multidisciplinar hecho desde las ganas y con cinco años de rodaje.</strong></p>
         </div>
         </div>
       </div>
@@ -1137,7 +1188,7 @@
         <div style="display:flex;flex-direction:column;gap:1rem;">
           <div class="catering-body">
             <h3>DeRambullé - Catering para Eventos - Las Palmas de Gran Canaria</h3>
-            <p>DeRambullé no es solo catering. Es la historia de dos uruguayos — Camila y Federico Berriel — que empezaron cocinando para amistades, en una mesa pequeña, y terminaron llenando de sabor celebraciones cada vez más grandes. Cada evento es una receta a medida: menús para fiestas, encuentros corporativos y servicios especiales, escuchando la historia de cada cliente. Además de cocinar, llevo las fotos, el contenido y las redes.</p>
+            <p>Soy socia de DeRambullé, un catering de eventos en Las Palmas. Lo monté junto a Federico Berriel — empezamos cocinando para amigos y ya llevamos eventos de verdad. Además de cocinar, llevo las fotos y las redes.</p>
           </div>
           <div class="catering-links" style="align-items:flex-start;">
             <a href="https://beacons.ai/derambulle" target="_blank" rel="noopener" class="catering-link">Web <span class="arr" aria-hidden="true">→</span></a>
@@ -1157,7 +1208,7 @@
       <h2 class="sec-title" id="tit-contacto">¿Trabajamos juntos?</h2>
       <div class="sec-rule" style="background:var(--ame-light); margin: 1rem auto 2rem;"></div>
       <p class="contacto-tag">Del caos creativo a una presencia digital memorable.</p>
-      <p style="color:rgba(255,255,255,.68); font-size:.85rem; margin-bottom:1.5rem; font-family:var(--f-cond); letter-spacing:.04em;">¿Tenés un proyecto, una idea o simplemente querés saber si encajamos? Escribime. Respondo a todo.</p>
+      <p style="color:rgba(255,255,255,.68); font-size:.85rem; margin-bottom:1.5rem; font-family:var(--f-cond); letter-spacing:.04em;">¿Tienes algo en mente o simplemente quieres conocer cómo trabajo? Escríbeme, sin compromiso.</p>
       <a href="mailto:holaestudiocaba@gmail.com" class="contacto-email">holaestudiocaba@gmail.com</a>
       <div class="social-links">
         <a href="https://www.instagram.com/estudiocabalpa/" target="_blank" rel="noopener" class="social-link">Instagram</a>
