@@ -79,8 +79,8 @@
 
     footer {
       background: #060606; padding: 1.5rem 3rem;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: .8rem;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center;
       border-top: 1px solid var(--border);
     }
     .foot-brand { font-family: var(--f-ec); font-size: .9rem; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; color: var(--white); text-decoration: none; }
@@ -88,7 +88,8 @@
     .foot-legal { display: flex; gap: 1.5rem; }
     .foot-legal a { font-family: var(--f-body); font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
     .foot-legal a:hover { color: var(--ame-pale); }
-    .foot-copy { font-family: var(--f-body); font-size: .68rem; color: rgba(255,255,255,.52); }
+    .foot-legal { justify-self: center; }
+    .foot-copy { font-family: var(--f-body); font-size: .68rem; color: rgba(255,255,255,.52); justify-self: end; text-align: right; }
 
     @media (max-width: 640px) {
       nav { padding: 0 1.2rem; height: 52px; }
@@ -207,7 +208,7 @@
     <a href="legal.html">Aviso legal</a>
     <a href="privacidad.html">Privacidad</a>
   </span>
-  <span class="foot-copy">© 2025 Camila González · Las Palmas de Gran Canaria</span>
+  <span class="foot-copy">© 2026 Camila González · Las Palmas de Gran Canaria</span>
 </footer>
 
 <script>
