@@ -439,7 +439,7 @@
     /* ─────────────────────────────────────────
        TESTIMONIOS
     ───────────────────────────────────────── */
-    .testi-section { overflow: hidden; }
+    .testi-section { overflow: hidden; padding-top: 1.5rem; margin-top: -2.5rem; }
     .testi-marquee {
       width: 100%; overflow: hidden;
       -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
@@ -454,11 +454,28 @@
       height: 180px; width: auto; flex-shrink: 0;
       border-radius: 6px; object-fit: cover;
       box-shadow: 0 10px 30px rgba(0,0,0,.4);
+      cursor: pointer;
     }
     @keyframes testi-scroll {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
+    .testi-zoom-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(8,4,16,.78);
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .testi-zoom-overlay.active { opacity: 1; }
+    .testi-zoom-overlay img {
+      max-width: 90vw; max-height: 85vh;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      transform: scale(.85);
+      transition: transform .25s ease;
+    }
+    .testi-zoom-overlay.active img { transform: scale(1); }
 
     /* ── MOCKUP LAPTOP ── */
     .mockup-laptop {
@@ -1173,6 +1190,10 @@
   </div>
 </section>
 
+<div class="testi-zoom-overlay" id="testi-zoom-overlay" aria-hidden="true">
+  <img src="" alt=""/>
+</div>
+
 <!-- ═══ 3. HISTORIA + CATERING ═══ -->
 <section id="historia" class="band-light" aria-labelledby="tit-historia">
   <div class="container">
@@ -1280,6 +1301,19 @@
   });
   document.addEventListener('mousedown', () => bat.classList.add('clicking'));
   document.addEventListener('mouseup',   () => bat.classList.remove('clicking'));
+
+  // Testimonios: ver imagen completa momentáneamente al hacer click
+  const zoomOverlay = document.getElementById('testi-zoom-overlay');
+  const zoomImg = zoomOverlay.querySelector('img');
+  document.querySelectorAll('.testi-img').forEach(img => {
+    img.addEventListener('click', () => {
+      zoomImg.src = img.src;
+      zoomImg.alt = img.alt;
+      zoomOverlay.classList.add('active');
+      setTimeout(() => zoomOverlay.classList.remove('active'), 1400);
+    });
+  });
+  zoomOverlay.addEventListener('click', () => zoomOverlay.classList.remove('active'));
 
   // Reveal
   const obs = new IntersectionObserver(entries => {
