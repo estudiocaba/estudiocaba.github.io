@@ -436,6 +436,30 @@
       gap: 4rem; align-items: start; margin-top: 3rem;
     }
 
+    /* ─────────────────────────────────────────
+       TESTIMONIOS
+    ───────────────────────────────────────── */
+    .testi-section { overflow: hidden; }
+    .testi-marquee {
+      width: 100%; overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    }
+    .testi-track {
+      display: flex; gap: 1.5rem; width: max-content;
+      animation: testi-scroll 80s linear infinite;
+    }
+    .testi-marquee:hover .testi-track { animation-play-state: paused; }
+    .testi-img {
+      height: 180px; width: auto; flex-shrink: 0;
+      border-radius: 6px; object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    @keyframes testi-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
     /* ── MOCKUP LAPTOP ── */
     .mockup-laptop {
       width: 100%; margin-top: 2.2rem;
@@ -674,6 +698,7 @@
       .catering-card { grid-template-columns: auto 1fr; }
       .catering-links { grid-column: 1/-1; flex-direction: row; }
       .pillar-num { font-size: 2rem; }
+      .testi-img { height: 140px; }
       footer { padding: 1.5rem; }
       .timeline { margin-top: 2.5rem; }
       .tl-item { min-width: 100px; }
@@ -741,6 +766,8 @@
       .foot-copy { font-size: .48rem; letter-spacing: 0; }
       .story-card { padding: 1.8rem; }
       .sec-rule { margin-bottom: 2rem; }
+      .testi-img { height: 100px; }
+      .testi-track { gap: 1rem; }
     }
 
     /* ── Mobile pequeño (≤380px) ── */
@@ -1100,6 +1127,48 @@
         <div class="pillar"><span class="pillar-num">03</span><div class="pillar-body"><strong>Acompañamiento Interno</strong><p>Desarrollo personal, trabajo espiritual y gestión del síndrome de la impostora.</p></div></div>
         <div class="pillar"><span class="pillar-num">04</span><div class="pillar-body"><strong>Escalada & Monetización</strong><p>Infoproductos, servicios escalables, ingresos reales desde tu creatividad.</p></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="band-dark testi-section" aria-label="Testimonios de 1:1, bajada de ideas y escalera de valor">
+  <div class="testi-marquee">
+    <div class="testi-track">
+      <img src="testimonios/photo_1_2026-06-12_14-48-55.jpg" alt="Testimonio de Asmae sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_2_2026-06-12_14-48-55.jpg" alt="Testimonio de Cristina sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_3_2026-06-12_14-48-55.jpg" alt="Testimonio de Cristina sobre su carta y plan de acción" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_4_2026-06-12_14-48-55.jpg" alt="Testimonio de Sonia sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_5_2026-06-12_14-48-55.jpg" alt="Testimonio sobre la sesión de bajada de ideas" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_6_2026-06-12_14-48-55.jpg" alt="Testimonio de Adriana sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_7_2026-06-12_14-48-55.jpg" alt="Testimonio de Gabi sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_8_2026-06-12_14-48-55.jpg" alt="Testimonio de Daniela sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_9_2026-06-12_14-48-55.jpg" alt="Testimonio de Ariadna sobre su escalera de valor" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_10_2026-06-12_14-48-55.jpg" alt="Testimonio de Estela sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_11_2026-06-12_14-48-55.jpg" alt="Testimonio de Carmen sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_12_2026-06-12_14-48-55.jpg" alt="Testimonio de Alba sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_13_2026-06-12_14-48-55.jpg" alt="Testimonio de Marce sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_14_2026-06-12_14-48-55.jpg" alt="Testimonio de Dianafit sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_15_2026-06-12_14-48-55.jpg" alt="Testimonio de Aarón sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_16_2026-06-12_14-48-55.jpg" alt="Testimonio de Rosa sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_17_2026-06-12_14-48-56.jpg" alt="Testimonio de Judit sobre su sesión 1:1" class="testi-img" loading="lazy"/>
+      <img src="testimonios/photo_1_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_2_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_3_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_4_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_5_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_6_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_7_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_8_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_9_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_10_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_11_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_12_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_13_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_14_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_15_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_16_2026-06-12_14-48-55.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
+      <img src="testimonios/photo_17_2026-06-12_14-48-56.jpg" alt="" class="testi-img" loading="lazy" aria-hidden="true"/>
     </div>
   </div>
 </section>
